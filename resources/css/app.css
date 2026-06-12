@@ -1,0 +1,33 @@
+@import '@fontsource-variable/inter';
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+    --font-sans--font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+
+    --animate-fade-out: fade-out 4s ease-in-out forwards;
+
+    @keyframes fade-out {
+        0%, 70% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+            pointer-events: none;
+        }
+    }
+
+}
+
+@layer utilities {
+    .bg-baby-pattern {
+        background-image: url('../../public/images/background-babybit.png');
+        background-repeat: repeat;
+        background-size: 300px 300px;
+    }
+}
