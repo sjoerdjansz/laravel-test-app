@@ -13,8 +13,8 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="bg-baby-pattern font-sans antialiased min-h-screen">
-<div class="min-h-screen grid grid-rows-[auto_1fr]">
+<body class="bg-baby-pattern font-sans antialiased h-screen overflow-hidden">
+<div class="h-screen flex flex-col">
     {{ $slot }}
 </div>
 </body>

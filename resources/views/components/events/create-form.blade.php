@@ -27,10 +27,10 @@
         </li>
     </ul>
     <div class="w-full">
-        <form action="POST" class="flex flex-wrap gap-2 w-full">
+        <form method="POST" action="" class="flex flex-wrap gap-2 w-full">
             @csrf
 
-            <x-forms.field label="Date" for="date" class="flex-1 basis-[calc(50%-0.25rem)]">
+            <x-forms.field label="Date" for="date" class="basis-full min-w-0 w-full">
                 <x-forms.input
                     type="date"
                     name="date"
@@ -39,7 +39,7 @@
 
             </x-forms.field>
 
-            <x-forms.field label="Time" for="time" class="flex-1 basis-[calc(50%-0.25rem)]">
+            <x-forms.field label="Time" for="time" class="basis-full min-w-0 w-full">
                 <x-forms.input
                     type="time"
                     name="time"
@@ -47,7 +47,7 @@
                 />
             </x-forms.field>
 
-            <x-forms.field label="Notes" for="notes" class="basis-full">
+            <x-forms.field label="Notes" for="notes" class="basis-full min-w-0 w-full">
                 <x-forms.textarea
                     placeholder="Add a note"
                     name="notes"
