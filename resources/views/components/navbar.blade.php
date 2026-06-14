@@ -1,4 +1,5 @@
-<nav class="bg-white border-b-8 border-pink-200 flex justify-between items-center px-4 py-2">
+<nav class="bg-white border-b-8 border-pink-200 flex justify-between items-center px-4
+py-2 shadow-sm">
     <div class="flex justify-between items-center">
         <img src="{{asset('images/baby_logo.png')}}" alt="baby logo" class="size-20">
         <p class="font-bold text-pink-500 ">{{isset($title) ? $title : 'Test'}}</p>

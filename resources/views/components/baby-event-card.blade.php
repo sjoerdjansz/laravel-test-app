@@ -27,7 +27,7 @@
 @endphp
 
 
-<article class="flex gap-4 items-start bg-neutral-50 p-4 rounded-lg drop-shadow-xs">
+<article class="flex gap-4 items-start bg-gray-50 p-4 rounded-lg shadow-xs">
 
     <span class="inline-flex shrink-0 items-center justify-center {{$typeColor}} w-10 h-10 rounded-full">
         <img class="size-5"

@@ -14,7 +14,7 @@ class BabyEventController extends Controller
                 'id' => 1,
                 'baby_id' => 1,
                 'type' => 'diaper',
-                'date' => '2026-06-12',
+                'date' => '2026-06-09',
                 'time' => [
                     'start' => '07:15',
                     'end' => null,
@@ -30,7 +30,7 @@ class BabyEventController extends Controller
                 'id' => 2,
                 'baby_id' => 1,
                 'type' => 'feed',
-                'date' => '2026-01-05',
+                'date' => '2026-06-10',
                 'time' => [
                     'start' => '08:00',
                     'end' => '08:18',
@@ -47,7 +47,7 @@ class BabyEventController extends Controller
                 'id' => 3,
                 'baby_id' => 1,
                 'type' => 'sleep',
-                'date' => '2026-06-12',
+                'date' => '2026-06-11',
                 'time' => [
                     'start' => '09:20',
                     'end' => '10:45',
@@ -78,7 +78,7 @@ class BabyEventController extends Controller
                 'id' => 5,
                 'baby_id' => 1,
                 'type' => 'temperature',
-                'date' => '2026-06-12',
+                'date' => '2026-06-11',
                 'time' => [
                     'start' => '11:30',
                     'end' => null,
@@ -95,7 +95,7 @@ class BabyEventController extends Controller
                 'id' => 6,
                 'baby_id' => 1,
                 'type' => 'feed',
-                'date' => '2026-06-12',
+                'date' => '2026-06-13',
                 'time' => [
                     'start' => '12:10',
                     'end' => '12:32',
@@ -113,7 +113,7 @@ class BabyEventController extends Controller
                 'id' => 7,
                 'baby_id' => 1,
                 'type' => 'sleep',
-                'date' => '2026-06-12',
+                'date' => '2026-06-14',
                 'time' => [
                     'start' => '13:15',
                     'end' => '13:55',
@@ -128,7 +128,7 @@ class BabyEventController extends Controller
                 'id' => 8,
                 'baby_id' => 1,
                 'type' => 'diaper',
-                'date' => '2026-06-12',
+                'date' => '2026-06-08',
                 'time' => [
                     'start' => '14:20',
                     'end' => null,
@@ -144,7 +144,7 @@ class BabyEventController extends Controller
                 'id' => 9,
                 'baby_id' => 1,
                 'type' => 'feed',
-                'date' => '2026-06-12',
+                'date' => '2026-06-08',
                 'time' => [
                     'start' => '15:00',
                     'end' => null,
@@ -178,7 +178,7 @@ class BabyEventController extends Controller
                 'id' => 11,
                 'baby_id' => 1,
                 'type' => 'feed',
-                'date' => '2026-06-12',
+                'date' => '2026-06-09',
                 'time' => [
                     'start' => '17:45',
                     'end' => '18:00',
@@ -195,7 +195,7 @@ class BabyEventController extends Controller
                 'id' => 12,
                 'baby_id' => 1,
                 'type' => 'feed',
-                'date' => '2026-06-12',
+                'date' => '2026-06-09',
                 'time' => [
                     'start' => '20:15',
                     'end' => '20:28',
