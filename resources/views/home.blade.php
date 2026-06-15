@@ -8,7 +8,7 @@
         </x-panel>
 
         <x-panel class="lg:col-span-8 lg:row-span-1 lg:min-h-0 lg:overflow-hidden">
-            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <div class="grid grid-cols-2 gap-4 md:grid-cols-2 lg:grid-cols-4">
                 <x-event-summary-card type="diaper" :events="$babyEvents"/>
                 <x-event-summary-card type="feed" :events="$babyEvents"/>
                 <x-event-summary-card type="sleep" :events="$babyEvents"/>
@@ -18,11 +18,15 @@
 
         <x-panel class="lg:col-span-8 lg:row-span-3 lg:min-h-0 lg:overflow-y-auto">
             <ul class="flex flex-col gap-2">
-                @foreach($babyEvents as $event)
+                @forelse($babyEvents as $event)
                     <li>
-                        <x-baby-event-card :event="$event">test</x-baby-event-card>
+                        <x-baby-event-card :event="$event">
+
+                        </x-baby-event-card>
                     </li>
-                @endforeach
+                @empty
+                    <p class="text-gray-500">No events logged yet.</p>
+                @endforelse
             </ul>
         </x-panel>
 

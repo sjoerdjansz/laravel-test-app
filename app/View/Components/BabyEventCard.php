@@ -2,6 +2,7 @@
 
 namespace App\View\Components;
 
+use App\Models\Event;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
@@ -15,17 +16,16 @@ class BabyEventCard extends Component
 //    properties
 
     public function __construct(
-        public array $event
+        public Event $event
     )
     {
     }
 
-
     public function formatTime(): string
     {
-        $start = $this->event['time']['start'] ?? null;
-        $end = $this->event['time']['end'] ?? null;
-        $duration = $this->event['time']['duration_minutes'] ?? null;
+        $start = $this->event->start_time ?? null;
+        $end = $this->event->end_time ?? null;
+        $duration = $this->event->duration_minutes ?? null;
 
         if ($end) {
             return $duration ? "{$start} - {$end} ({$duration}m)" : "{$start} - {$end}";
@@ -35,17 +35,12 @@ class BabyEventCard extends Component
     }
 
     public function formatDate(): string {
-        $date = $this->event['date'] ?? null;
+        $date = $this->event->date ?? null;
         return date("M jS", strtotime($date)) ;
     }
 
-    public function capitalizeTitle(): string
-    {
-        return ucfirst($this->event['title'] ?? '');
-    }
-
     public function getTypeTitle(): string {
-        return match ($this->event['type']) {
+        return match ($this->event->type) {
             'diaper' => 'Diaper',
             'feed' => 'Feed',
             'sleep' => 'Sleep',
@@ -56,7 +51,7 @@ class BabyEventCard extends Component
 
     public function details(): string
     {
-        return match ($this->event['type']) {
+        return match ($this->event->type) {
             'diaper' => $this->diaperDetails(),
             'feed' => $this->feedDetails(),
             'sleep' => $this->sleepDetails(),
@@ -67,20 +62,20 @@ class BabyEventCard extends Component
 
     private function feedDetails(): ?string
     {
-        return $this->event['metadata']['feed_type'] ?? null;
+        return $this->event->metadata['feed_type'] ?? null;
     }
 
     private function sleepDetails(): ?string
     {
-        return $this->event['metadata']['quality'] ?? null;
+        return $this->event->metadata['quality'] ?? null;
     }
 
-    private function temperatureDetails(): ?string {
-        return $this->event['metadata']['value'] ?? null;
+    private function temperatureDetails() {
+        return $this->event->metadata['value'] ?? null;
     }
 
     private function diaperDetails(): ?string {
-        return $this->event['metadata']['diaper_type'] ?? null;
+        return $this->event->metadata['diaper_type'] ?? null;
     }
 
 

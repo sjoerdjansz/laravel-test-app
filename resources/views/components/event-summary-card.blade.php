@@ -1,3 +1,4 @@
+{{--Anonymous component dus wel expliciet props declareren --}}
 @props([
     'type',
     'events'
@@ -5,18 +6,18 @@
 
 @php
 
-    $filteredType = array_filter($events , fn($el) => $el['type'] == $type);
+    $filteredType = $events->where('type', $type);
 
-    $mostRecentEvent = collect($filteredType)->sortByDesc(fn ($event) => $event['date'] . ' ' . ($event['time']['start'] ?? '00:00'))->first();
+    $mostRecentEvent = $filteredType->sortByDesc(fn ($event) => $event->date . ' ' . ($event->start_time ?? '00:00'))->first();
 
-    $displayDateTime = function(?array $event): string {
+    $displayDateTime = function($event): string {
 
         if(!$event) {
             return 'No events yet';
         }
 
-        $date = $event['date'] ?? null;
-        $time = $event['time']['start'] ?? null;
+        $date = $event->date ?? null;
+        $time = $event->start_time ?? null;
 
         if (!$date) {
             return 'No date';
