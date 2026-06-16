@@ -24,9 +24,7 @@
 
 @endphp
 
-
 <article class="flex gap-4 items-start bg-gray-50 p-4 rounded-lg shadow-xs">
-
     <span class="inline-flex shrink-0 items-center justify-center {{$typeColor}} w-10 h-10 rounded-full">
         <img class="size-5"
              src="{{asset($image)}}"
@@ -41,14 +39,21 @@
         @endif
     </div>
 
-    <div class="ml-auto flex shrink-0 flex-col items-end gap-3">
+    <form method="POST" action="/events/{{$event->id}}" class="ml-auto flex shrink-0 flex-col items-end gap-3">
+        @csrf
         <span class="text-sm text-gray-500">{{$formatDate() ?? null}}</span>
-        <span class="text-sm text-gray-500">View notes</span>
-        <span class="inline-flex shrink-0 items-center justify-center bg-gray-200 w-8 h-8 rounded-full">
-        <img class="size-5"
-             src="{{ asset('images/trash.svg') }}"
-             alt="delete-event">
-    </span>
-    </div>
+
+        <button class="inline-flex shrink-0 items-center justify-center bg-gray-100 w-8 h-8 rounded-full">
+            <img class="size-5"
+                 src="{{ asset('images/notes.svg') }}"
+                 alt="view-notes"></button>
+        @method('DELETE')
+        <button onclick="return confirm('Are you sure you want to delete this event?')";
+           class="inline-flex shrink-0 items-center justify-center bg-gray-100 w-8 h-8 rounded-full">
+            <img class="size-5"
+                 src="{{ asset('images/trash.svg') }}"
+                 alt="delete-event">
+        </button>
+    </form>
 
 </article>

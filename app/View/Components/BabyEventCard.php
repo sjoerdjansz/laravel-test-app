@@ -34,12 +34,12 @@ class BabyEventCard extends Component
         return $start ?? '';
     }
 
-    public function formatDate(): string {
+    public function formatDate(): ?string {
         $date = $this->event->date ?? null;
         return date("M jS", strtotime($date)) ;
     }
 
-    public function getTypeTitle(): string {
+    public function getTypeTitle(): ?string {
         return match ($this->event->type) {
             'diaper' => 'Diaper',
             'feed' => 'Feed',
@@ -49,7 +49,7 @@ class BabyEventCard extends Component
         };
     }
 
-    public function details(): string
+    public function details(): ?string
     {
         return match ($this->event->type) {
             'diaper' => $this->diaperDetails(),

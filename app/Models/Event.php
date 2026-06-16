@@ -17,8 +17,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property array|null $metadata
  * @property-read \App\Models\User|null $user
  */
-class Event
-    extends Model
+class Event extends Model
 {
     protected $fillable = [
         'user_id',
@@ -36,9 +35,9 @@ class Event
         'metadata' => 'array',
     ];
 
-    public function user(): belongsTo
+    public function user(): BelongsTo
     {
-        return $this->BelongsTo(User::class);
+        return $this->belongsTo(User::class);
     }
 
 }

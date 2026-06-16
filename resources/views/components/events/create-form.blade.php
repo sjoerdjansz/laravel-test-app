@@ -4,57 +4,71 @@
         <p>Log diapers, feeding moments, sleep and temperature.</p>
         <hr class="text-gray-300">
     </div>
-    <ul class="flex flex-row gap-2 flex-wrap">
-        <li>
-            <x-events.type-button color="bg-amber-300">
-                Diaper
-            </x-events.type-button>
-        </li>
-        <li>
-            <x-events.type-button color="bg-green-300">
-                Feed
-            </x-events.type-button>
-        </li>
-        <li>
-            <x-events.type-button color="bg-purple-300">
-                Sleep
-            </x-events.type-button>
-        </li>
-        <li>
-            <x-events.type-button color="bg-red-300">
-                Temp
-            </x-events.type-button>
-        </li>
-    </ul>
+
     <div class="w-full">
-        <form method="POST" action="" class="flex flex-wrap gap-2 w-full">
+        <form method="POST" action="{{route('events.store') }}" class="flex flex-wrap gap-2 w-full">
             @csrf
 
+            @if ($errors->any())
+                <div class="bg-red-100 text-red-800 p-3 rounded">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
+            <ul class="flex flex-row gap-2 flex-wrap">
+                <li>
+                    <x-events.type-radio color="bg-amber-300" type="diaper" label="Diaper"/>
+                </li>
+                <li>
+                    <x-events.type-radio color="bg-green-300" type="feed" label="Feed"/>
+                </li>
+                <li>
+                    <x-events.type-radio color="bg-purple-300" type="sleep" label="Sleep" />
+
+                </li>
+                <li>
+                    <x-events.type-radio color="bg-red-300" type="temperature" label="Temperature"/>
+                </li>
+            </ul>
             <x-forms.field label="Date" for="date" class="basis-full min-w-0 w-full">
                 <x-forms.input
                     type="date"
                     name="date"
                     id="date"
+                    value="{{old('date')}}"
                 />
 
             </x-forms.field>
-
-            <x-forms.field label="Time" for="time" class="basis-full min-w-0 w-full">
+            @error('date')
+            <p class="text-red-500">{{ $message }}</p>
+            @enderror
+            <x-forms.field label="Time" for="start_time" class="basis-full min-w-0 w-full">
                 <x-forms.input
                     type="time"
-                    name="time"
-                    id="time"
+                    name="start_time"
+                    id="start_time"
+                    value="{{old('start_time')}}"
                 />
             </x-forms.field>
+            @error('start_time')
+            <p class="text-red-500">{{ $message }}</p>
+            @enderror
 
             <x-forms.field label="Notes" for="notes" class="basis-full min-w-0 w-full">
                 <x-forms.textarea
                     placeholder="Add a note"
                     name="notes"
                     id="notes"
+                    value="{{old('notes')}}"
                 />
             </x-forms.field>
-
+            @error('notes')
+            <div class="error">{{ $message }}</div>
+            @enderror
             <x-forms.field class="basis-full" label='' for=''>
                 <x-forms.button
                     type="submit"
