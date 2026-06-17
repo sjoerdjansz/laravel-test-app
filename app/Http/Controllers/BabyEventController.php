@@ -28,7 +28,7 @@ class BabyEventController extends Controller
 
         $event->delete();
 
-        return redirect()->route('index')->with('success', 'Event deleted!');
+        return redirect()->route('index')->with('deleted', 'Event deleted!');
     }
 
 }

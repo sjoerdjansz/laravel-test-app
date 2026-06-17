@@ -13,5 +13,3 @@
 
     {{$slot}}
 </div>
-
-{{--flex-1 basis-[calc(50%-0.25rem)] voor de date en time in de xpanel--}}

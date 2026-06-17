@@ -1,5 +1,6 @@
 @props([
     'title',
+    'pageTitle'
     ])
 
     <!doctype html>
@@ -35,9 +36,9 @@
     </script>
 @endif
 
-@if (session('success'))
+@if (session('deleted'))
     <div id="delete-toast" class="bg-red-100 text-red-800 p-3 rounded z-50 fixed top-6 left-1/2 -translate-x-1/2">
-        {{ session('success') }}
+        {{ session('deleted') }}
     </div>
 
     <script>

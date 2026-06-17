@@ -9,16 +9,6 @@
         <form method="POST" action="{{route('events.store') }}" class="flex flex-wrap gap-2 w-full">
             @csrf
 
-            @if ($errors->any())
-                <div class="bg-red-100 text-red-800 p-3 rounded">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
-
             <ul class="flex flex-row gap-2 flex-wrap">
                 <li>
                     <x-events.type-radio color="bg-amber-300" type="diaper" label="Diaper"/>
@@ -39,7 +29,7 @@
                     type="date"
                     name="date"
                     id="date"
-                    value="{{old('date')}}"
+                    value="{{ old('date', now()->format('Y-m-d')) }}"
                 />
 
             </x-forms.field>
@@ -51,7 +41,7 @@
                     type="time"
                     name="start_time"
                     id="start_time"
-                    value="{{old('start_time')}}"
+                    value="{{ old('start_time', now()->format('H:i')) }}"
                 />
             </x-forms.field>
             @error('start_time')
