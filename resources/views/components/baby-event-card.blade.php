@@ -41,14 +41,15 @@
 
     <form method="POST" action="/events/{{$event->id}}" class="ml-auto flex shrink-0 flex-col items-end gap-3">
         @csrf
+        @method('DELETE')
+
         <span class="text-sm text-gray-500">{{$formatDate() ?? null}}</span>
 
-        <button class="inline-flex shrink-0 items-center justify-center bg-gray-100 w-8 h-8 rounded-full">
+        <a href="/" class="inline-flex shrink-0 items-center justify-center bg-gray-100 w-8 h-8 rounded-full">
             <img class="size-5"
                  src="{{ asset('images/notes.svg') }}"
-                 alt="view-notes"></button>
-        @method('DELETE')
-        <button onclick="return confirm('Are you sure you want to delete this event?')";
+                 alt="view-notes"></a>
+        <button onclick="return confirm('Are you sure you want to delete this event?')"
            class="inline-flex shrink-0 items-center justify-center bg-gray-100 w-8 h-8 rounded-full">
             <img class="size-5"
                  src="{{ asset('images/trash.svg') }}"

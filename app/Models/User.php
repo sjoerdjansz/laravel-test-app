@@ -12,12 +12,22 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'baby_name',
+        'birthday'
     ];
 
 // De attributen die verborgen moeten blijven voor serialisatie.
     protected $hidden = [
         'password',
     ];
+
+
+    protected function casts() {
+        return [
+            'birthday' => 'date',
+            'password' => 'hashed',
+        ];
+    }
 
     public function events(): HasMany
     {

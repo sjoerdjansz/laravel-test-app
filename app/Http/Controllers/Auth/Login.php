@@ -13,12 +13,13 @@ class Login extends Controller
      */
     public function __invoke(Request $request)
     {
-        $validated = $request->validate([
+        $credentials = $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required'],
         ]);
 
-        if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){
+        if(Auth::attempt($credentials, $request->boolean('remember'))){
+            // Regenerate session for security
             $request->session()->regenerate();
 
             // Redirect user

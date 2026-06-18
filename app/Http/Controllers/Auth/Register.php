@@ -25,6 +25,8 @@ class Register extends Controller
             'name' => ['required', 'string', 'max:99'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8'], // je kan nog confirmed toevoegen als een password geconfirmd moet worden
+            'baby_name' => ['required', 'string', 'max:50'],
+            'birthday' => ['required', 'date'],
         ]);
 
         // create new user
@@ -32,6 +34,8 @@ class Register extends Controller
             'name' => $validated['name'],
             'email' => $validated['email'],
             'password' => Hash::make($validated['password']),
+            'baby_name' => $validated['baby_name'],
+            'birthday' => $validated['birthday'],
         ]);
 
         // Login new user

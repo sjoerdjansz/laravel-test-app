@@ -6,14 +6,17 @@ use App\Http\Controllers\Auth\Register;
 use App\Http\Controllers\BabyEventController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [BabyEventController::class, 'index'])->name('index');
-Route::post('/events', [BabyEventController::class, 'store'])->name('events.store');
-// TODO: nog maken
-//Route::get('/events/{event}/edit', [BabyEventController::class, 'edit'])->name('events.edit');
-// TODO: nog maken
-//Route::put('/events/{event}', [BabyEventController::class, 'update'])->name('events.update');
 
-Route::delete('/events/{event}', [BabyEventController::class, 'destroy'])->name('events.destroy');
+// Event routes
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/', [BabyEventController::class, 'index'])->name('index');
+    Route::post('/events', [BabyEventController::class, 'store'])->name('events.store');
+    Route::delete('/events/{event}', [BabyEventController::class, 'destroy'])->name('events.destroy');
+
+//  Route::get('/events/{event}/edit', [BabyEventController::class, 'edit'])->name('events.edit');
+//  Route::put('/events/{event}', [BabyEventController::class, 'update'])->name('events.update');
+
+});
 
 // Register routes
 Route::view('/register', 'auth.register')->middleware('guest')->name('register');

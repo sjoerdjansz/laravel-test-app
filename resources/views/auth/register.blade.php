@@ -5,6 +5,15 @@
 
             <form action="{{route('register.store')}}" method="POST" class="flex flex-col gap-4">
 
+                @if ($errors->any())
+                    <div class="mb-4 rounded-md bg-red-100 p-4 text-red-700">
+                        <ul class="list-disc pl-5">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 @csrf
                 <x-forms.field label="Username" for="name" class="basis-full min-w-100 w-full">
                     <x-forms.input
@@ -29,25 +38,27 @@
                         id="password"
                         value="{{old('password')}}"
                     />
-
                 </x-forms.field>
+
                 <p class="text-pink-500">Baby Details</p>
-                <x-forms.field label="Baby Name" for="babyName" class="basis-full min-w-100 w-full">
+                <x-forms.field label="Baby Name" for="baby_name" class="basis-full min-w-100 w-full">
                     <x-forms.input
                         type="text"
-                        name="babyName"
-                        id="babyName"
-                        value="{{old('babyName')}}"
+                        name="baby_name"
+                        id="baby_name"
+                        value="{{old('baby_name')}}"
                     />
                 </x-forms.field>
-                <x-forms.field label="Date of Birth" for="dateOfBirth" class="basis-full min-w-100 w-full">
+
+                <x-forms.field label="Date of Birth" for="birthday" class="basis-full min-w-100 w-full">
                     <x-forms.input
                         type="date"
-                        name="dateOfBirth"
-                        id="dateOfBirth"
-                        value="{{old('dateOfBirth')}}"
+                        name="birthday"
+                        id="birthday"
+                        value="{{old('birthday')}}"
                     />
                 </x-forms.field>
+
                 <x-forms.field for="" label="">
                     <x-forms.button class="text-green-900" type="submit">Register</x-forms.button>
                 </x-forms.field>

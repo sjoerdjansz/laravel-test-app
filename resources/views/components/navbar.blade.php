@@ -6,7 +6,7 @@ py-2 shadow-sm">
             <p class="font-bold text-pink-500 ">{{isset($title) ? $title : 'Test'}}</p>
         </div>
         <div class="flex gap-6">
-            <span>{{auth()->user()->name}}</span>
+            <span>Welcome {{auth()->user()->name}} and {{auth()->user()->baby_name}}</span>
             <form action="/logout" method="POST" class="inline">
                 @csrf
                 <button type="submit" class="text-blue-500">Logout</button>

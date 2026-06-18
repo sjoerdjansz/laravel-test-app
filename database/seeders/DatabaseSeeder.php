@@ -18,11 +18,15 @@ class DatabaseSeeder extends Seeder
     {
 //         User::factory(10)->create();
 
-        User::firstOrCreate ([
-            'name' => 'Sjoerd',
-            'email' => 'sjoerd@gmail.com',
+        User::firstOrCreate(
+            ['email' => 'sjoerd@gmail.com'],
+
+            ['name' => 'Sjoerd',
             'email_verified_at' => now(),
-            'password' => bcrypt('test'),
+            'password' => 'test',
+            'remember_token' => null,
+            'baby_name' => 'Evita',
+            'birthday' => '2026-05-19',
         ]);
 
         $this->call([EventSeeder::class]);

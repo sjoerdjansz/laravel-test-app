@@ -22,6 +22,14 @@
                         value="{{old('password')}}"
                     />
                 </x-forms.field>
+                <div class="form-control mt-4">
+                    <label class="label cursor-pointer flex items-center">
+                        <input type="checkbox"
+                               name="remember"
+                               class="checkbox">
+                        <span class="label-text ml-2">Remember me</span>
+                    </label>
+                </div>
                 <x-forms.field for="" label="">
                     <x-forms.button class="text-green-900" type="submit">Login</x-forms.button>
                 </x-forms.field>

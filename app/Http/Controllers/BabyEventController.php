@@ -10,21 +10,35 @@ class BabyEventController extends Controller
 //    Alle listings van de resource weergeven
     public function index()
     {
-        // haal de events uit de model/database
-        $babyEvents = Event::with('user')
-            ->get()->sortByDesc(function ($event) {
-                return $event->date;
-            });
 
-        return view('home', ['babyEvents' => $babyEvents]);
+        // haal de events uit de model/database
+
+        $events = auth()->user()
+            ->events()
+            ->orderByDesc('date')->orderByDesc('start_time')
+            ->get();
+
+        // oud
+//        $babyEvents = Event::with('user')
+//            ->get()->sortByDesc(function ($event) {
+//                return $event->date;
+//            });
+
+        return view('home', ['babyEvents' => $events]);
     }
 
-    public function store(StoreEventRequest $request) {
-        Event::create($request->validated());
+    public function store(StoreEventRequest $request)
+    {
+        $request->user()->events()->create($request->validated());
         return redirect()->route('index')->with('success', 'Event created!');
     }
 
-    public function destroy(Event $event) {
+    public function destroy(Event $event)
+    {
+
+        if ($event->user_id !== auth()->id()) {
+            abort(403);
+        }
 
         $event->delete();
 
