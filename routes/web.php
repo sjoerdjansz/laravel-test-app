@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\Login;
 use App\Http\Controllers\Auth\Logout;
 use App\Http\Controllers\Auth\Register;
 use App\Http\Controllers\BabyEventController;
@@ -21,3 +22,7 @@ Route::post('/register', Register::class)->middleware('guest')->name('register.s
 // Logout routes
 Route::post('/logout', Logout::class)->middleware('auth');
 
+// Login routes
+
+Route::view('/login', 'auth.login')->middleware('guest')->name('login');
+Route::post('login', Login::class)->middleware('guest');
