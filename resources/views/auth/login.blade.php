@@ -1,6 +1,7 @@
 <x-layouts.app>
     <div class="min-h-[calc(100vh-4rem)] flex flex-row justify-center items-center">
         <div class="flex flex-col p-4 border rounded-md bg-white border-neutral-200 shadow-md">
+
             <h1 class="py-6 text-4xl text-pink-500 font-bold">Login</h1>
 
             <form action="{{route('login')}}" method="POST" class="flex flex-col gap-4">
